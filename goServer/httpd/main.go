@@ -13,6 +13,7 @@ func main() {
 
 	r.GET("/board", handler.BoardGet(status))
 	r.POST("/board", handler.BoardPost(status))
+	r.POST("/boardNew", handler.BoardNew(status))
 
 	r.Run()
 }

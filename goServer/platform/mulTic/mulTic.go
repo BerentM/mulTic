@@ -10,14 +10,20 @@ func New() *Status {
 	return &Status{}
 }
 
-func (r *Status) Update(s string) {
+func (r *Status) Update(b string) {
 	st := r.Show()
 	if st.NextPlayer == "x" {
 		r.NextPlayer = "o"
 	} else {
 		r.NextPlayer = "x"
 	}
-	r.Board = s
+	r.Board = b
+	r.Winner = ""
+}
+
+func (r *Status) Restart(n string) {
+	r.NextPlayer = n
+	r.Board = `{"0": " ", "1": " ", "2": " ", "3": " ", "4": " ", "5": " ", "6": " ", "7": " ", "8": " "}`
 	r.Winner = ""
 }
 

@@ -7,19 +7,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type multicPostRequest struct {
-	NextPlayer string `json:"nextPlayer"`
-	Board      string `json:"board"`
-}
-
-func BoardPost(status *mulTic.Status) gin.HandlerFunc {
+func BoardNew(status *mulTic.Status) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		requestBody := multicPostRequest{}
 		c.Bind(&requestBody)
 
-		b := requestBody.Board
+		n := requestBody.NextPlayer
 
-		status.Update(b)
+		status.Restart(n)
 
 		c.Status(http.StatusNoContent)
 	}
